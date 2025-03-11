@@ -1,0 +1,24 @@
+import { Card, Container, Divider, Typography } from "@mui/material";
+import { useLocation } from "react-router";
+
+export default function ServerErrorPage() {
+
+    const { state } = useLocation();
+
+    return (
+        <Container component={Card} sx={{ p: 3 }}>
+
+            {state?.error ? (
+                <>
+                    <Typography variant="h3" gutterBottom >{state.error.title}-{state.status}</Typography>
+                    <Divider />
+                    <Typography variant="body2">{state.error.detail || "Unknown Error"} </Typography>
+                </>
+            ) :
+                (
+                    <Typography>Server Error</Typography>
+                )
+            }
+        </Container>
+    )
+}
