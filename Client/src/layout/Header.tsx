@@ -11,6 +11,11 @@ const links =[
     {Title:"Errors",to :"/errors"}
     
 ]
+const authLinks = [
+    {title :"Login" , to:"/login"},
+    {title :"Register" , to:"/register"},
+
+]
 const navStyles ={
     color:"inherit",
     textDecoration:"none",
@@ -43,8 +48,11 @@ export default function Header(){
                         <Badge badgeContent={itemCount} color="secondary">
                             <ShoppingCart/>
                         </Badge>
-                        
-                    </IconButton>
+                   </IconButton>
+                   <Stack direction="row"> 
+                        {/* nav link yapmamız sayfanın yenilenmeden componentler arasında geçiş yapmasını sağlar */}
+                        {authLinks.map(p => <Button key={p.to} component={NavLink} to={p.to} sx={navStyles}> {p.title}</Button>)}
+                    </Stack>
                  </Box>
             </Toolbar>
        </AppBar>

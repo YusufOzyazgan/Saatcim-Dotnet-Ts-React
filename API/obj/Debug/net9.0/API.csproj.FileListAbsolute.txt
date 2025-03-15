@@ -292,3 +292,14 @@ C:\Users\Yusuf\Desktop\React_Project\api\obj\Debug\net9.0\API.pdb
 C:\Users\Yusuf\Desktop\React_Project\api\obj\Debug\net9.0\API.genruntimeconfig.cache
 C:\Users\Yusuf\Desktop\React_Project\api\obj\Debug\net9.0\ref\API.dll
 C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\API.staticwebassets.runtime.json
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Yusuf\Desktop\React_Project\API\obj\Debug\net9.0\API.sourcelink.json
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Scalar.AspNetCore.dll
