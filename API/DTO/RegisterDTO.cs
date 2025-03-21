@@ -18,7 +18,7 @@ public class RegisterDTO
     
     public string Password {get; set;}=null!;
 
-    [Compare(nameof(Password), ErrorMessage ="Şifreleriniz uyuşmuyor")]
-    public string ConfirmPassword  {get; set;} =null!;
+    // [Compare(nameof(Password), ErrorMessage ="Şifreleriniz uyuşmuyor")]
+    // public string ConfirmPassword  {get; set;} =null!;
     
 }

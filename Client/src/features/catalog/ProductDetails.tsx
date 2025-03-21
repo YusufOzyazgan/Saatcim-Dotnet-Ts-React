@@ -4,9 +4,9 @@ import { useParams } from "react-router";
 import { AddShoppingCart, CurrencyLira } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import { currencyTRY } from "../../utils/formatCurrency";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addItemToCart } from "../cart/CartSlice";
 import {  fetchProductById, selectProductById } from "./CatalogSlice";
+import { useAppDispatch, useAppSelector } from "../../store/Store";
 
 export default function ProductDetailsPage() {
     // burda urldeki idyi çekeriz
@@ -43,7 +43,7 @@ export default function ProductDetailsPage() {
             <Grid2 size={{ xl: 9, lg: 8, md: 7, sm: 6, xs: 12 }}>
                 <Typography variant="h3">{product.name}</Typography>
                 <Divider sx={{ mb: 2 }} />
-                <Typography variant="h4" color="secondary(">Price: {currencyTRY.format(product.price)}  <CurrencyLira /> </Typography>
+                <Typography variant="h4" color="secondary(">Price: {currencyTRY.format(product.price)}   </Typography>
                 <TableContainer>
                     <Table>
                         <TableBody>

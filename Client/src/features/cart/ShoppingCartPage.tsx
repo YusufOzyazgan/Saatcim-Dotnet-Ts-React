@@ -4,8 +4,8 @@ import { AddCircleOutline, Delete, RemoveCircleOutline } from "@mui/icons-materi
 import { toast } from "react-toastify";
 import CartSummary from "./CartSummary";
 import { currencyTRY } from "../../utils/formatCurrency";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addItemToCart, deleteItemFromCart } from "./CartSlice";
+import { useAppDispatch, useAppSelector } from "../../store/Store";
 
 export default function ShoppingCartPage() {
 

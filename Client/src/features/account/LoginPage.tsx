@@ -1,10 +1,11 @@
 import { LockOutlined } from "@mui/icons-material";
 import { Avatar, Box, Button, Container, Paper, TextField, Typography } from "@mui/material";
 import { FieldValues, useForm} from "react-hook-form";
-import { useAppDispatch } from "../../hooks/hooks";
 import { loginUser } from "./accountSlice";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "../../store/Store";
+import { getCart } from "../cart/CartSlice";
 export default function LoginPage(){
 
     const dispatch = useAppDispatch();
@@ -12,13 +13,14 @@ export default function LoginPage(){
     // !! işareti string veri türünü bool'a çevirir
     const {register,handleSubmit,formState :{errors,isSubmitting}}  = useForm({
         defaultValues : {
-            username: "",
-            password: "" 
+            username: "Yucufer",
+            password: "Abc.123" 
         }
     });
     async function submitForm(data: FieldValues) {
         try{
             await dispatch(loginUser(data)).unwrap();
+            await dispatch(getCart());
             toast.success("Giriş yapıldı.");
             navigate("/catalog");
         }catch(error : any){

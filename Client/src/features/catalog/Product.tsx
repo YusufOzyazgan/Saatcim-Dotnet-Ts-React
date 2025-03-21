@@ -3,8 +3,8 @@ import { IProduct } from "../../Model/IProduct"
 import { AddShoppingCart,  Search } from "@mui/icons-material"
 import { Link } from "react-router"
 import { currencyTRY } from "../../utils/formatCurrency";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addItemToCart } from "../cart/CartSlice";
+import { useAppDispatch, useAppSelector } from "../../store/Store";
 
 
 

@@ -5,13 +5,16 @@ import { store } from "../store/Store";
 axios.defaults.baseURL = "http://localhost:5291/api/";
 axios.defaults.withCredentials = true;
 
-axios.interceptors.request.use(request => {
-    const token  =  store.getState().account.user?.token;
-    if(token){
-        request.headers.Authorization = `Bearer ${token}`
-    }
-        return request
-
+axios.interceptors.request.use(request => { 
+    const token = store.getState().account.user?.token;
+    // const parsedData = JSON.parse(localStorage.getItem("user") ?? "");
+    // const token = parsedData.token;
+    
+    if(token)
+        
+        request.headers.Authorization = `Bearer ${token}`;
+    
+    return request;
 })
 axios.interceptors.response.use(response => {
     return response;
@@ -28,7 +31,7 @@ axios.interceptors.response.use(response => {
                 throw modelErrors;
 
             }
-
+            console.log("Case 400 çalıştı.");
             toast.error(data.title);
             break;
 
