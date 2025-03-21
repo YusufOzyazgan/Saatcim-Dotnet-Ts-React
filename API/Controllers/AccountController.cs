@@ -1,6 +1,7 @@
 using API.DTO;
 using API.Entity;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,22 +21,22 @@ public class AccountController : ControllerBase{
     }
     
     [HttpPost]
-    public async Task<IActionResult> Login (LoginDTO model) 
+    public async Task<ActionResult> Login (LoginDTO model) 
     {
         if (ModelState.IsValid)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
             if (user == null){
-                return BadRequest(new {message = "Böyle bir kullanıcı bulunmamakta."});
+                return BadRequest(new ProblemDetails {Title = "Kullanıcı adı hatalı!"});
             }
 
             var result = await _userManager.CheckPasswordAsync(user, model.Password);
             if(result)
             {
                 
-                return Ok(new {token= await _tokenServices.GenerateToken(user) });
+                return Ok(new UserDTO {Token= await _tokenServices.GenerateToken(user),Name = user.FullName! });
             }
-            return BadRequest(new {message ="Hatalı Parola"});
+            return BadRequest(new ProblemDetails {Title ="Hatalı Parola"});
         }
 
         return Ok();
@@ -63,7 +64,14 @@ public class AccountController : ControllerBase{
         return BadRequest(new {message = result.Errors});
     }
 
-    
-
+    [Authorize]
+    [HttpGet]
+    public async Task<ActionResult<UserDTO>> GetUser(){
+         var user = await _userManager.FindByNameAsync(User.Identity?.Name!);
+            if (user == null){
+                return BadRequest(new ProblemDetails {Title = "Kullanıcı Bulunamadı!"});
+            }
+            return new UserDTO {Token= await _tokenServices.GenerateToken(user),Name = user.FullName! };
+    }
 
 }

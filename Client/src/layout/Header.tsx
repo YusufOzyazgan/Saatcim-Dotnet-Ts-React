@@ -1,7 +1,8 @@
-import { ShoppingCart } from "@mui/icons-material";
+import { ExitToApp, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, Button, IconButton,  Stack, Toolbar, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
-import { useAppSelector } from "../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import { logout } from "../features/account/accountSlice";
 
 const links =[
     {Title:"Home",to :"/"},
@@ -29,6 +30,8 @@ const navStyles ={
 
 export default function Header(){
     const{cart} = useAppSelector(state => state.cart);
+    const{user} = useAppSelector(state => state.account);
+    const dispatch = useAppDispatch();
     const itemCount = cart?.cartItems.reduce((total,item) => total + item.quantity,0)
     return(
    
@@ -49,10 +52,21 @@ export default function Header(){
                             <ShoppingCart/>
                         </Badge>
                    </IconButton>
-                   <Stack direction="row"> 
+                   {
+                    user ? ( 
+                        <Stack direction="row">
+                            <Button sx={navStyles}> {user.name}</Button>
+                            <Button  sx={navStyles} onClick={() => dispatch(logout())}> Logout <ExitToApp/> </Button>
+                        </Stack>
+                        
+                    ): (
+                        <Stack direction="row"> 
                         {/* nav link yapmamız sayfanın yenilenmeden componentler arasında geçiş yapmasını sağlar */}
                         {authLinks.map(p => <Button key={p.to} component={NavLink} to={p.to} sx={navStyles}> {p.title}</Button>)}
                     </Stack>
+                    )
+                   }
+                  
                  </Box>
             </Toolbar>
        </AppBar>

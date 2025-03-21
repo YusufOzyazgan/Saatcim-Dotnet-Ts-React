@@ -1,27 +1,39 @@
 import { LockOutlined } from "@mui/icons-material";
 import { Avatar, Box, Button, Container, Paper, TextField, Typography } from "@mui/material";
-import { useState } from "react";
-import requests from "../../api/request";
-
+import { FieldValues, useForm} from "react-hook-form";
+import { useAppDispatch } from "../../hooks/hooks";
+import { loginUser } from "./accountSlice";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 export default function LoginPage(){
-    // const [username, SetUsername] = useState("");
-    // const [password, SetPassword] = useState("");
 
-    const [values,setValues] = useState({
-        username: "",
-        password:""
-    })
-    function handleSubmit(e:any){
-        // preventDefault sayfanın yenilenmesini engeller
-        e.preventDefault();
-        console.log(values);
-        requests.Account.login(values)
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    // !! işareti string veri türünü bool'a çevirir
+    const {register,handleSubmit,formState :{errors,isSubmitting}}  = useForm({
+        defaultValues : {
+            username: "",
+            password: "" 
+        }
+    });
+    async function submitForm(data: FieldValues) {
+        try{
+            await dispatch(loginUser(data)).unwrap();
+            toast.success("Giriş yapıldı.");
+            navigate("/catalog");
+        }catch(error : any){
+         
+            if (error?.error) {
+                toast.error(error.error); 
+            } else {
+                toast.error("Giriş yapılırken beklenmeyen bir hata oluştu daha sonra tekrar deneyin.");
+            }
+            
+        }
+     
+        
     }
-    function handleInputChange(e:any){
-        const{name,value} = e.target;
-        // asagidaki sistem name göre değeri günvceller örneğin username: "abc"
-        setValues({...values,[name]:value}) ;
-      }
+    console
     return(
         <Container maxWidth="xs">
         {/* paper div işlevi görür fakat elevation gibi özelliklerle gölgelendirme elde edebiliriz.Box işlevinde*/}
@@ -30,27 +42,32 @@ export default function LoginPage(){
             <LockOutlined/>
         </Avatar>
         <Typography component="h1" variant="h5" sx={{textAlign:"center"}}>Login</Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt:2}}> 
+        <Box component="form" onSubmit={handleSubmit(submitForm)} noValidate sx={{mt:2}}> 
             <TextField 
-            name="username"
-            value={values.username}
-            onChange={handleInputChange}
+            {...register("username",{required:"Kullanıcı adı girmelisiniz!"})}
             label="Enter Username" 
             fullWidth required autoFocus 
             sx={{mb:2}}
-            size="small"> </TextField>
+            size="small"
+            error={!!errors.username}
+            helperText={errors.username?.message}> </TextField>
 
             <TextField 
-            name="password"
-            value={values.password}
-            onChange={handleInputChange}
+            {...register("password",{required:"Şifre Girmeilisiniz!", minLength:{
+                value:6, message:"Şifre en az 6 karakter uzunluğunda olmalı!"}
+            })}
             label="Enter Passord" 
             type="password" 
             fullWidth required autoFocus 
             sx={{mb:2}}
-            size="small"> </TextField>
+            size="small"
+            error={!!errors.password}
+            helperText={errors.password?.message}> </TextField>
             
-            <Button type="submit" variant= "contained" fullWidth sx={{mt:1}}>Login</Button>
+            
+            <Button 
+             loading={isSubmitting} 
+            type="submit" variant= "contained" fullWidth sx={{mt:1}}>Login</Button>
         </Box>
         </Paper>
         </Container>
