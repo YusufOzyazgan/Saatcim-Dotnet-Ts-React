@@ -2,7 +2,7 @@ import { LockOutlined } from "@mui/icons-material";
 import { Avatar, Box, Button, Container, Paper, TextField, Typography } from "@mui/material";
 import { FieldValues, useForm} from "react-hook-form";
 import { loginUser } from "./accountSlice";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../store/Store";
 import { getCart } from "../cart/CartSlice";
@@ -10,9 +10,10 @@ export default function LoginPage(){
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     // !! işareti string veri türünü bool'a çevirir
     const {register,handleSubmit,formState :{errors,isSubmitting}}  = useForm({
-        defaultValues : {
+        defaultValues : { 
             username: "Yucufer",
             password: "Abc.123" 
         }
@@ -22,7 +23,8 @@ export default function LoginPage(){
             await dispatch(loginUser(data)).unwrap();
             await dispatch(getCart());
             toast.success("Giriş yapıldı.");
-            navigate("/catalog");
+
+            navigate(location.state?.from || "/catalog");
         }catch(error : any){
          
             if (error?.error) {
