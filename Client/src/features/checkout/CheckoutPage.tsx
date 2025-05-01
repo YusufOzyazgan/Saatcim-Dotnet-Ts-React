@@ -1,11 +1,14 @@
-import { Box, Button, getStepContentUtilityClass, Grid2, Paper, Step, StepContent, StepLabel, Stepper } from "@mui/material";
+import { Box, Button,  Checkbox,  Grid2, Paper, Stack, Step, StepLabel, Stepper, Typography } from "@mui/material";
 import Info from "./Info";
 import AddressForm from "./AddresForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import { useState } from "react";
-import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
-import { FormProvider, useForm } from "react-hook-form";
+import { Check, ChevronLeftRounded, ChevronRightRounded, LocalShipping } from "@mui/icons-material";
+import { FieldValues, FormProvider, useForm } from "react-hook-form";
+import requests from "../../api/request";
+import { useAppDispatch } from "../../store/Store";
+import { clearCart } from "../cart/CartSlice";
 
 function getStepContent(step: number) {
     switch (step) {
@@ -26,8 +29,26 @@ export default function CheckoutPage() {
     const [activeStep, setActiveStep] = useState(0);
     const steps = ["Teslimat Bilgileri", "Ödeme", "Sipariş Özeti"];
     const methods = useForm();
+    const [orderId, setOrderId] =useState(0);
+    const [loading, setLoading] = useState(false);
+    const dispatch = useAppDispatch();
 
-    function handleNext() {
+    async function handleNext(data: FieldValues) {
+
+        if(activeStep === 2)
+        {
+            setLoading(true);
+            try{
+                setOrderId(await requests.Order.creteaOrder(data));
+                dispatch(clearCart());
+                setLoading(false);
+            }catch(error:any){
+                console.log(error);
+                setLoading(false);
+            }
+            
+
+        }
         if (activeStep < 3) {
 
             setActiveStep(activeStep + 1);
@@ -35,7 +56,7 @@ export default function CheckoutPage() {
     }
     function handlePrevious() {
         if (activeStep > 0) {
-            setActiveStep(activeStep - 1);
+            (activeStep - 1);
         }
     }
     return (
@@ -43,11 +64,17 @@ export default function CheckoutPage() {
             {/* paper gölge efekti veriyor */}
             <Paper>
                 <Grid2 container spacing={5}>
-                    <Grid2 size={4} sx={{ borderRight: "1px solid", borderColor: "divider", p: 3 }}>
-                        <Info />
-                    </Grid2>
 
-                    <Grid2 size={8} sx={{ p: 3 }}>
+                    {activeStep !== steps.length && (
+                        
+                         <Grid2 size={4} sx={{ borderRight: "1px solid", borderColor: "divider", p: 3 }}>
+                             <Info />
+                        </Grid2>
+                    )}
+
+                   
+
+                    <Grid2 size={ activeStep !== steps.length ? 8 : 12} sx={{ p: 3 }}>
                         <Box>
                             <Stepper activeStep={activeStep} sx={{ height: 40, mb: 3 }}>
                                 {steps.map((label) => (
@@ -59,7 +86,24 @@ export default function CheckoutPage() {
                         </Box>
                         <Box>
                             {activeStep === steps.length ? (
-                                <h2>Sipariş tamamlandı</h2>
+                                <Stack spacing={2}>
+                                    <Typography variant="h1">
+                                    📦
+                                    </Typography>
+
+                                    <Typography variant="h5">Teşekkür ederiz. Siparişinizi aldık.</Typography>
+                                    <Typography variant="body1" sx={{color: "text.secondary"}}>
+                                        Sipariş numaranız <strong>{orderId}</strong>. Siparişiniz onaylandığında size bir e posta göndereceğiz.
+                                    </Typography>
+
+                                   <Button variant="contained" sx={{alignSelf: "start",width:{xs:"100%", sm:"auto"}}}>
+                                    Siparişleri Listele
+                                   </Button>
+                                
+                                </Stack>
+
+
+
                             ) : (
                                 // handle next'e tiklandigi zaman submit islemi gerceklesecek
                                 <form onSubmit={methods.handleSubmit(handleNext)}>
@@ -80,8 +124,8 @@ export default function CheckoutPage() {
                                                     onClick={handlePrevious}>Geri</Button>
                                             }
 
-                                            <Button endIcon={<ChevronRightRounded />} variant="contained"
-                                                type="submit" >İleri</Button>
+                                            <Button loading={loading} endIcon={<ChevronRightRounded />} variant="contained"
+                                                type="submit" >{activeStep == 2 ? "Siparişi Tamamla" : "İleri"}  </Button>
                                         </Box>
                                     </Box>
                                 </form>

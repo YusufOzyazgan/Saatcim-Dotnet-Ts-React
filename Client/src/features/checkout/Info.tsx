@@ -18,7 +18,7 @@ export default function Info()
                 <ListItemAvatar>
                     <Avatar variant="square" src={`http://localhost:5291/images/${item.imageUrl}`}></Avatar>
                 </ListItemAvatar>
-                <ListItemText sx={{mr:2}} primary={item.name}  secondary={`x ${item.quantity}`} />
+                <ListItemText sx={{mr:2}} primary={item.name.substring(0,15)+"..."}  secondary={`x ${item.quantity}`} />
                 <Typography variant="body1">
                     {currencyTRY.format(item.price)}
                 </Typography>

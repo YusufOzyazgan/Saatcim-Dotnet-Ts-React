@@ -1,9 +1,10 @@
-import { ExitToApp, ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Box, Button, IconButton,  Stack, Toolbar, Typography } from "@mui/material";
+import { ExitToApp, KeyboardArrowDown, ShoppingCart } from "@mui/icons-material";
+import { AppBar, Badge, Box, Button, Container, IconButton,  Menu,  MenuItem,  Stack, Toolbar, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
 import { logout } from "../features/account/accountSlice";
 import { useAppDispatch, useAppSelector } from "../store/Store";
 import { clearCart } from "../features/cart/CartSlice";
+import { useState } from "react";
 
 
 
@@ -36,11 +37,22 @@ export default function Header(){
     const{user} = useAppSelector(state => state.account);
     const dispatch = useAppDispatch();
     const itemCount = cart?.cartItems.reduce((total,item) => total + item.quantity,0)
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>();
+    const open = Boolean(anchorEl);
+
+    function handleMenuClick(event: React.MouseEvent<HTMLButtonElement>) {
+        setAnchorEl(event.currentTarget);
+    }
+    function handleClose(){
+        setAnchorEl(null);
+    }
+
     return(
    
         <AppBar position="static" sx={{mb:4}}>
         {/* sx ile css kodları yazılabiliyor. */}
-            <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
+        <Container maxWidth={"lg"}>
+            <Toolbar disableGutters sx={{display:"flex", justifyContent:"space-between"}}>
                 <Box sx={{display:"flex",alignItems:"center"}}>
                     <Typography variant="h6">E-commerce</Typography>
                     {/* stack bir listeyi yatay veya dikey sıralamamızı sağlıyor yatay sıralaması için direction row komutu vermemiz gerekiyor */}
@@ -57,13 +69,22 @@ export default function Header(){
                    </IconButton>
                    {
                     user ? ( 
-                        <Stack direction="row">
-                            <Button sx={navStyles}> {user.name}</Button>
-                            <Button  sx={navStyles} onClick={() =>{ 
+                        <>
+                            <Button id={"user-button"}onClick={handleMenuClick} endIcon={<KeyboardArrowDown/>} sx={navStyles}> {user.name}</Button>
+                            
+
+                            <Menu id={"user-menu"} open={open} onClose={handleClose} anchorEl={anchorEl} >
+
+                                <MenuItem>Orders</MenuItem>
+                                
+                                <MenuItem onClick={() =>{ 
                                 dispatch(logout());
                                 dispatch(clearCart());
-                                }}> Logout <ExitToApp/> </Button>
-                        </Stack>
+                                }}>Logout</MenuItem>
+                            
+                            </Menu>
+                            
+                        </>
                         
                     ): (
                         <Stack direction="row"> 
@@ -75,6 +96,7 @@ export default function Header(){
                   
                  </Box>
             </Toolbar>
+       </Container>
        </AppBar>
 
     )

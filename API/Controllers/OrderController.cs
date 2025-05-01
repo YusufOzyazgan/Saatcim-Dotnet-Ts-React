@@ -90,7 +90,7 @@ namespace API.Controllers
             var result = await  _context.SaveChangesAsync() >0;
 
             if(result) 
-                return CreatedAtRoute(nameof(GetOrder) , new{ id = order.Id},order.Id);
+                return CreatedAtAction(nameof(GetOrder) , new{ id = order.Id},order.Id);
 
            
             return BadRequest(new ProblemDetails {Title = "Sipariş oluşturma aşamasında hata oluştu."});
