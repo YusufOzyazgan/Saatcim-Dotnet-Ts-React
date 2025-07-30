@@ -13,7 +13,7 @@ export default function Review(){
                     <Typography sx={{display: "flex", alignItems:"center"}} variant="h6" gutterBottom> Teslimat Bilgileri <DeliveryDining sx={{ml:1}} color="secondary"/> </Typography>
                     <Typography  sx={{ml:2 ,color:"text.secondary"}}gutterBottom> {getValues("firstname")+" "+ getValues("lastname")}</Typography>
                     <Typography  sx={{ml:2,color:"text.secondary"}}gutterBottom> {getValues("phone")}</Typography>
-                    <Typography sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("addressline")+" / "+ getValues("city")}</Typography>
+                    <Typography sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("addresline")+" / "+ getValues("city")}</Typography>
                 </div>
                 <div>
                     <Typography sx={{display: "flex", alignItems:"center"}} variant="h6" gutterBottom> Ödeme Bilgileri <Payment color="secondary" sx={{ml:1}}/> </Typography>

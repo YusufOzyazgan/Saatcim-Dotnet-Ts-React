@@ -303,3 +303,5 @@ C:\Users\Yusuf\Desktop\React_Project\API\obj\Debug\net9.0\refint\API.dll
 C:\Users\Yusuf\Desktop\React_Project\API\obj\Debug\net9.0\API.pdb
 C:\Users\Yusuf\Desktop\React_Project\API\obj\Debug\net9.0\API.genruntimeconfig.cache
 C:\Users\Yusuf\Desktop\React_Project\API\obj\Debug\net9.0\ref\API.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Iyzipay.dll
+C:\Users\Yusuf\Desktop\React_Project\API\bin\Debug\net9.0\Newtonsoft.Json.dll

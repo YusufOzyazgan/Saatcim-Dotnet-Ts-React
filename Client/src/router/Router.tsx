@@ -14,6 +14,7 @@ import LoginPage from "../features/account/LoginPage";
 import RegisterPage from "../features/account/RegisterPage";
 import CheckoutPage from "../features/checkout/CheckoutPage";
 import AuthGuard from "./AuthGuard";
+import OrderList from "../features/orders/OrderList";
 
 
 export const router = createBrowserRouter([
@@ -34,7 +35,8 @@ export const router = createBrowserRouter([
             {path: "not-found",element: <NotfoundPage/>},
             {path: "*", element : <Navigate to="/not-found"/>},
             { element: <AuthGuard/> , children : [
-                {path: "checkout",element: <CheckoutPage/>}
+                {path: "checkout",element: <CheckoutPage/>},
+                {path: "orders",element:<OrderList/>}
                 ]
             }
             

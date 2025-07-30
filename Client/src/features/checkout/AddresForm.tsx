@@ -52,13 +52,13 @@ export default function AddressForm() {
 
             <Grid2 size={{xs:12}}>
                 <TextField
-                    {...register("addressline", { required: "Adres girmelisiniz!" })}
+                    {...register("addresline", { required: "Adres girmelisiniz!" })}
                     label="Adres"
                     fullWidth autoFocus multiline 
                     rows={4}
                     sx={{ mb: 2 }}
                     size="small"
-                    error={!!errors.addressline}
+                    error={!!errors.addresline}
                  ></TextField> 
             </Grid2>
         

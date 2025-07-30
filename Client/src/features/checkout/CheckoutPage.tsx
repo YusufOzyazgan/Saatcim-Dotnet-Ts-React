@@ -96,7 +96,7 @@ export default function CheckoutPage() {
                                         Sipariş numaranız <strong>{orderId}</strong>. Siparişiniz onaylandığında size bir e posta göndereceğiz.
                                     </Typography>
 
-                                   <Button variant="contained" sx={{alignSelf: "start",width:{xs:"100%", sm:"auto"}}}>
+                                   <Button component="a" variant="contained" href="/orders" sx={{alignSelf: "start",width:{xs:"100%", sm:"auto"}}}>
                                     Siparişleri Listele
                                    </Button>
                                 
