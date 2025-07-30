@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\7.jpg"
     },
     {
+      "Id": "C:\\Users\\Yusuf\\Desktop\\React_Project\\API\\wwwroot\\images\\8.jpg",
+      "PackagePath": "staticwebassets\\images\\8.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

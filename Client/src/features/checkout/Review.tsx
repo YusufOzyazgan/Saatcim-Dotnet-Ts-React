@@ -17,9 +17,9 @@ export default function Review(){
                 </div>
                 <div>
                     <Typography sx={{display: "flex", alignItems:"center"}} variant="h6" gutterBottom> Ödeme Bilgileri <Payment color="secondary" sx={{ml:1}}/> </Typography>
-                    <Typography  sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("cart_name")}</Typography>
-                    <Typography  sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("cart_number")}</Typography>
-                    <Typography  sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("cart_expired_date")}</Typography>
+                    <Typography  sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("cardname")}</Typography>
+                    <Typography  sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("cardnumber")}</Typography>
+                    <Typography  sx={{ml:2,color:"text.secondary"}} gutterBottom> {getValues("cardexpiremonth")}/{getValues("cardexpireyear")}</Typography>
                 </div>
                 
             </Stack>

@@ -31,7 +31,7 @@ axios.interceptors.response.use(response => {
                 throw modelErrors;
 
             }
-            console.log("Case 400 çalıştı.");
+            
             toast.error(data.title);
             break;
 

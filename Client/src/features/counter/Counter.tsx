@@ -19,7 +19,7 @@ export default function Counter() {
                 <Input
                     type="number"
                     value={amount}
-                    onChange={(e) => setAmount(e.target.value)} // Input değiştikçe state güncellenir
+                    onChange={(e) => setAmount(e.target.value)} //Input değiştikçe güncellenir
                 />
                 <Button onClick={() => dispatch(incrementByValue(Number(amount) || 0))}>
                     Increment By Amount

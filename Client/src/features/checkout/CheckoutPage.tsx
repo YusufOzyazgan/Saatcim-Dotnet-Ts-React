@@ -1,14 +1,15 @@
-import { Box, Button,  Checkbox,  Grid2, Paper, Stack, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { Box, Button,   Grid2, Paper, Stack, Step, StepLabel, Stepper, Typography } from "@mui/material";
 import Info from "./Info";
 import AddressForm from "./AddresForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import { useState } from "react";
-import { Check, ChevronLeftRounded, ChevronRightRounded, LocalShipping } from "@mui/icons-material";
+import {  ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import requests from "../../api/request";
 import { useAppDispatch } from "../../store/Store";
 import { clearCart } from "../cart/CartSlice";
+import { toast } from "react-toastify";
 
 function getStepContent(step: number) {
     switch (step) {
@@ -34,12 +35,22 @@ export default function CheckoutPage() {
     const dispatch = useAppDispatch();
 
     async function handleNext(data: FieldValues) {
+        if (activeStep < 3) {
 
+            setActiveStep(activeStep + 1);
+        }
         if(activeStep === 2)
         {
             setLoading(true);
             try{
+                data.phone = String(data.phone);
+                data.cardnumber = String(data.cardnumber.replace(/\s/g, ""));
+                data.cardexpiremonth = String(data.cardexpiremonth);
+                data.cardexpireyear = String(data.cardexpireyear);
+                console.log(data);
+                console.log("cart number type ", typeof data.cardnumber);
                 setOrderId(await requests.Order.creteaOrder(data));
+                toast.success("Siparişiniz başarıyla alındı.");
                 dispatch(clearCart());
                 setLoading(false);
             }catch(error:any){
@@ -49,16 +60,19 @@ export default function CheckoutPage() {
             
 
         }
-        if (activeStep < 3) {
+        
+    }
 
-            setActiveStep(activeStep + 1);
-        }
-    }
     function handlePrevious() {
+      
         if (activeStep > 0) {
-            (activeStep - 1);
+        
+              setActiveStep( activeStep - 1);
         }
+   
+        
     }
+
     return (
         <FormProvider {...methods}>
             {/* paper gölge efekti veriyor */}
@@ -87,10 +101,11 @@ export default function CheckoutPage() {
                         <Box>
                             {activeStep === steps.length ? (
                                 <Stack spacing={2}>
+                                   
                                     <Typography variant="h1">
                                     📦
                                     </Typography>
-
+                                    
                                     <Typography variant="h5">Teşekkür ederiz. Siparişinizi aldık.</Typography>
                                     <Typography variant="body1" sx={{color: "text.secondary"}}>
                                         Sipariş numaranız <strong>{orderId}</strong>. Siparişiniz onaylandığında size bir e posta göndereceğiz.
@@ -101,7 +116,7 @@ export default function CheckoutPage() {
                                    </Button>
                                 
                                 </Stack>
-
+    
 
 
                             ) : (
@@ -130,7 +145,7 @@ export default function CheckoutPage() {
                                     </Box>
                                 </form>
                             )}
-
+    
                         </Box>
                     </Grid2>
                 </Grid2>

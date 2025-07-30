@@ -71,7 +71,7 @@ export default function LoginPage(){
             
             <Button 
              loading={isSubmitting} 
-            type="submit" variant= "contained" fullWidth sx={{mt:1}}>Login</Button>
+            type="submit" variant="contained" fullWidth sx={{mt:1}}>Login</Button>
         </Box>
         </Paper>
         </Container>

@@ -575,6 +575,88 @@
           "Value": "images/7.jpg"
         }
       ]
+    },
+    {
+      "Route": "images/8.jpg",
+      "AssetFile": "images/8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25334"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Jul 2025 08:44:24 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI="
+        }
+      ]
+    },
+    {
+      "Route": "images/8.orh3eir6sg.jpg",
+      "AssetFile": "images/8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25334"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Jul 2025 08:44:24 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "orh3eir6sg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI="
+        },
+        {
+          "Name": "label",
+          "Value": "images/8.jpg"
+        }
+      ]
     }
   ]
 }

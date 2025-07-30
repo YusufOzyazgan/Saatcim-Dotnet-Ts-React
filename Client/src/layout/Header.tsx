@@ -1,5 +1,5 @@
-import { ExitToApp, KeyboardArrowDown, ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Box, Button, Container, IconButton, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
+import {  KeyboardArrowDown, ShoppingCart } from "@mui/icons-material";
+import { AppBar, Badge, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
 import { logout } from "../features/account/accountSlice";
 import { useAppDispatch, useAppSelector } from "../store/Store";
@@ -9,11 +9,11 @@ import { useState } from "react";
 
 
 const links = [
-    { Title: "Home", to: "/" },
-    { Title: "About", to: "/about" },
-    { Title: "Contact", to: "/contact" },
-    { Title: "Catalog", to: "/catalog" },
-    { Title: "Errors", to: "/errors" }
+    { Title: "Anasayfa", to: "/" },
+    { Title: "Katalog", to: "/catalog" },
+    { Title: "Hakkımızda", to: "/about" },
+    { Title: "İletişim", to: "/contact" },
+    { Title: "Hatalar", to: "/errors" }
 
 ]
 const authLinks = [
@@ -22,7 +22,7 @@ const authLinks = [
 
 ]
 const navStyles = {
-    color: "inherit",
+    color: "secondary.main",
     textDecoration: "none",
     "&:hover": {
         color: "text.primary"
@@ -37,7 +37,7 @@ export default function Header() {
     const { user } = useAppSelector(state => state.account);
     const dispatch = useAppDispatch();
     const itemCount = cart?.cartItems.reduce((total, item) => total + item.quantity, 0)
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
     function handleMenuClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -46,15 +46,15 @@ export default function Header() {
     function handleClose() {
         setAnchorEl(null);
     }
-
+    // CornflowerBlue 
     return (
 
-        <AppBar position="static" sx={{ mb: 4 }}>
+        <AppBar position="static"  sx={{ mb: 4,bgcolor:"DeepSkyBlue" }}>
             {/* sx ile css kodları yazılabiliyor. */}
 
             <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between", mx: 2 }}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography variant="h6">E-Commerce</Typography>
+                    <Typography variant="h6" sx={{color:"SteelBlue",mr:1}}>Saatçim</Typography>
                     {/* stack bir listeyi yatay veya dikey sıralamamızı sağlıyor yatay sıralaması için direction row komutu vermemiz gerekiyor */}
                     <Stack direction="row">
                         {/* nav link yapmamız sayfanın yenilenmeden componentler arasında geçiş yapmasını sağlar */}
@@ -70,16 +70,17 @@ export default function Header() {
                     {
                         user ? (
                             <>
-                                <Button id={"user-button"} onClick={handleMenuClick} endIcon={<KeyboardArrowDown />} sx={navStyles}> {user.name}</Button>
+                                <Button id="user-button" onClick={handleMenuClick} endIcon={<KeyboardArrowDown />} sx={navStyles}> {user.name}</Button>
 
 
-                                <Menu id={"user-menu"} open={open} onClose={handleClose} anchorEl={anchorEl} >
+                                <Menu id="user-menu" open={open} onClose={handleClose} anchorEl={anchorEl} >
 
                                     <MenuItem component={Link} to="/orders">Orders</MenuItem>
 
                                     <MenuItem onClick={() => {
                                         dispatch(logout());
                                         dispatch(clearCart());
+                                        handleClose();
                                     }}>Logout</MenuItem>
 
                                 </Menu>

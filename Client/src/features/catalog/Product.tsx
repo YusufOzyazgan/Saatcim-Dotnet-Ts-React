@@ -5,6 +5,7 @@ import { Link } from "react-router"
 import { currencyTRY } from "../../utils/formatCurrency";
 import { addItemToCart } from "../cart/CartSlice";
 import { useAppDispatch, useAppSelector } from "../../store/Store";
+import { toast } from "react-toastify";
 
 
 
@@ -39,7 +40,10 @@ export default function Product({ product }: Props) {
       <CardActions>
         {/* <Button variant="outlined"  size="small"  >Add to cart</Button> */}
         <Button variant="outlined" size="small" loading={status === "pendingAddItem_"+product.id}
-          onClick={() => dispatch(addItemToCart({productId: product.id}))}
+          onClick={() => { 
+            dispatch(addItemToCart({productId: product.id}));
+            toast.success("Ürün sepetinize eklendi");
+          }}
           startIcon={<AddShoppingCart />} >Sepete Ekle </Button>
 
         <Button size="small" component={Link} to={`/catalog/${product.id}`} startIcon={<Search />} variant="outlined" color="primary" >View</Button>

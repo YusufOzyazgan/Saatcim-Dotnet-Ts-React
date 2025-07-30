@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/cWFTVs6wTHjMaBmDmRDm9g60Phrx3HCtaR/8gWW2Ac=",
+  "Hash": "NTu+PHhJm7VCfPcLEq36wgf2InTLk9wXRR/vM2PPfYs=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -162,6 +162,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\7.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Yusuf\\Desktop\\React_Project\\API\\wwwroot\\images\\8.jpg",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Yusuf\\Desktop\\React_Project\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "images/8#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "orh3eir6sg",
+      "Integrity": "TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\8.jpg"
     }
   ],
   "Endpoints": [
@@ -736,6 +757,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-nfjKH3GGe65a8MjfwqVq6lvGncxJBR0EYjKlsFjsGZE="
+        }
+      ]
+    },
+    {
+      "Route": "images/8.jpg",
+      "AssetFile": "C:\\Users\\Yusuf\\Desktop\\React_Project\\API\\wwwroot\\images\\8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25334"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Jul 2025 08:44:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI="
+        }
+      ]
+    },
+    {
+      "Route": "images/8.orh3eir6sg.jpg",
+      "AssetFile": "C:\\Users\\Yusuf\\Desktop\\React_Project\\API\\wwwroot\\images\\8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25334"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Jul 2025 08:44:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "orh3eir6sg"
+        },
+        {
+          "Name": "label",
+          "Value": "images/8.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI="
         }
       ]
     }

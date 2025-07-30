@@ -84,5 +84,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xrzecoeyav"},{"Name":"integrity","Value":"sha256-nfjKH3GGe65a8MjfwqVq6lvGncxJBR0EYjKlsFjsGZE="},{"Name":"label","Value":"_content/API/images/7.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"45377"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022nfjKH3GGe65a8MjfwqVq6lvGncxJBR0EYjKlsFjsGZE=\u0022"},{"Name":"Last-Modified","Value":"Mon, 30 Dec 2024 09:03:01 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/API/images/8.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\8.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25334"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Jul 2025 08:44:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/API/images/8.orh3eir6sg.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\8.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"orh3eir6sg"},{"Name":"integrity","Value":"sha256-TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI="},{"Name":"label","Value":"_content/API/images/8.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25334"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022TP0uJ87Tv7DA6FRJoPiWk0rqbhPTEBh3UV9aiNF7bjI=\u0022"},{"Name":"Last-Modified","Value":"Fri, 25 Jul 2025 08:44:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
