@@ -35,10 +35,7 @@ export default function CheckoutPage() {
     const dispatch = useAppDispatch();
 
     async function handleNext(data: FieldValues) {
-        if (activeStep < 3) {
-
-            setActiveStep(activeStep + 1);
-        }
+        
         if(activeStep === 2)
         {
             setLoading(true);
@@ -59,6 +56,10 @@ export default function CheckoutPage() {
             }
             
 
+        }
+        else if (activeStep < 3) {
+
+            setActiveStep(activeStep + 1);
         }
         
     }

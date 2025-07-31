@@ -1,9 +1,10 @@
-import { Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Alert, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Order } from "../../Model/IOrder";
 import requests from "../../api/request";
 import { currencyTRY } from "../../utils/formatCurrency";
 import { ArrowRight, Close } from "@mui/icons-material";
+import { yellow } from "@mui/material/colors";
 
 const orderStatus = ["Beklemede", "Onaylandı", "Ödeme Hatası", "Tamamlandı"]
 
@@ -38,9 +39,12 @@ export default function OrderList() {
     }, [])
 
     if (loading) return <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}><CircularProgress /> </div>;
+    if (orders?.length === 0 ) return <Alert severity="warning"> Siparişiniz Bulunmamaktadır</Alert>
+    
     return (
         <>
             <Typography variant="h3" sx={{ textAlign: "center", mb: 2 }}>Siparişlerim</Typography>
+            
             <TableContainer component={Paper}>
                 <Table sx={{ minWith: 650 }}>
                     <TableHead>
@@ -132,7 +136,7 @@ export default function OrderList() {
                 <DialogActions>
                                 <Button onClick={HandleDialogClose}>Kapat</Button>
                 </DialogActions>
-            </Dialog>
+            </Dialog> 
 
         </>
     );

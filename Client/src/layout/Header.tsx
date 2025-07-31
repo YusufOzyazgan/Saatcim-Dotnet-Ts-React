@@ -1,4 +1,4 @@
-import {  KeyboardArrowDown, ShoppingCart } from "@mui/icons-material";
+import { KeyboardArrowDown, Logout, Margin, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
 import { logout } from "../features/account/accountSlice";
@@ -49,12 +49,17 @@ export default function Header() {
     // CornflowerBlue 
     return (
 
-        <AppBar position="static"  sx={{ mb: 4,bgcolor:"DeepSkyBlue" }}>
+        <AppBar position="static" sx={{ mb: 4, bgcolor: "DeepSkyBlue" }}>
             {/* sx ile css kodları yazılabiliyor. */}
 
             <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between", mx: 2 }}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography variant="h6" sx={{color:"SteelBlue",mr:1}}>Saatçim</Typography>
+
+                    <Button onClick={() => window.location.href = "/"} sx={{my:0,py:0}} >
+                        <img width={110} src="../assets/saatcim_logo2.png" alt="" />
+                    </Button>
+
+                    {/* <Typography variant="h6" sx={{color:"SteelBlue",mr:1}}>Saatçim</Typography> */}
                     {/* stack bir listeyi yatay veya dikey sıralamamızı sağlıyor yatay sıralaması için direction row komutu vermemiz gerekiyor */}
                     <Stack direction="row">
                         {/* nav link yapmamız sayfanın yenilenmeden componentler arasında geçiş yapmasını sağlar */}
@@ -75,13 +80,13 @@ export default function Header() {
 
                                 <Menu id="user-menu" open={open} onClose={handleClose} anchorEl={anchorEl} >
 
-                                    <MenuItem component={Link} to="/orders">Orders</MenuItem>
+                                    <MenuItem component={Link} to="/orders">Siparişlerim</MenuItem>
 
                                     <MenuItem onClick={() => {
                                         dispatch(logout());
                                         dispatch(clearCart());
                                         handleClose();
-                                    }}>Logout</MenuItem>
+                                    }}>Çıkış Yap<Logout/> </MenuItem>
 
                                 </Menu>
 
